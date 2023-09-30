@@ -32,6 +32,7 @@ namespace FIAP_Idwall.API
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FIAP_Idwall.API", Version = "v1" });
@@ -54,6 +55,11 @@ namespace FIAP_Idwall.API
 
             app.UseAuthorization();
 
+            app.UseCors(access => access.AllowAnyHeader()
+                                        .AllowAnyMethod()
+                                        .AllowAnyOrigin()
+            );
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
