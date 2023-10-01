@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>FIAP_Idwall.Application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FIAP-Idwall.Domain\FIAP-Idwall.Domain.csproj" />
+    <ProjectReference Include="..\FIAP-Idwall.Persistence\FIAP-Idwall.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
