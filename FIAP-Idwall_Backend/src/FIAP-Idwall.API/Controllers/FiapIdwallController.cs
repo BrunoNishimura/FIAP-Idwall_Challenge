@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
-using FIAP_Idwall.API.Data;
-using FIAP_Idwall.API.Models;
+using FIAP_Idwall.Persistence;
+using FIAP_Idwall.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -14,8 +14,8 @@ namespace FIAP_Idwall.API.Controllers
     [Route("api/[controller]")]
     public class FiapIdwallController : ControllerBase
     {
-        public readonly DataContext _context;
-        public FiapIdwallController(DataContext context)
+        public readonly FIAP_IdwallContext _context;
+        public FiapIdwallController(FIAP_IdwallContext context)
         {
             _context = context;
         }
@@ -23,13 +23,13 @@ namespace FIAP_Idwall.API.Controllers
        [HttpGet]
         public IEnumerable<FiapIdwall> Get()
         {
-           return _context.GetDbFiapIdwalls;
+           return _context.FiapIdwalls;
         }
 
         [HttpGet("{id}")]
         public FiapIdwall GetById(int id)
         {
-            return _context.GetDbFiapIdwalls.FirstOrDefault(evento => evento.WantedId == id); //retorna com os ids
+            return _context.FiapIdwalls.FirstOrDefault(evento => evento.Id == id); //retorna com os ids
         }
 
 

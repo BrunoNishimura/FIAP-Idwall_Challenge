@@ -23,4 +23,9 @@
     <ProjectReference Include="..\FIAP-Idwall.Application\FIAP-Idwall.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

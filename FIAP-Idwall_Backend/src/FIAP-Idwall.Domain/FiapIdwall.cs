@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FIAP_Idwall.API.Models
+namespace FIAP_Idwall.Domain
 {
     public class FiapIdwall
     {
-        [Key]
-        public int WantedId { get; set; }
-       
+        public int Id { get; set; }
+
         public string PictureUrl { get; set; }
 
         public string Fullname { get; set; }
@@ -21,5 +20,12 @@ namespace FIAP_Idwall.API.Models
 
         public string Details { get; set; }
 
+        // public int? InterpolId { get; set; }
+
+        public ModelInterpol ModelInterpol { get; set; }
+
+        // public int? FbiId { get; set; }
+
+        public ModelFbi ModelFbi { get; set; }
     }
 }
