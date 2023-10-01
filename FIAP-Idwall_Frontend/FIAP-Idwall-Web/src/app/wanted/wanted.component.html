@@ -1,12 +1,59 @@
-<p>wanted works!</p>
+<br>
+<h2>Procurados - Interpol & FBI</h2>
+<hr>
+<p>Pessoas procuradas pela Interpol e pelo FBI.</p>
+<br>
 
 
-<div *ngFor="let wanted of wantedList">
-  <p><b>Id: </b>{{wanted.wantedId}}</p>
-  <p><b>Avatar: </b>{{wanted.pictureUrl}}</p>
-  <p><b>Nome: </b>{{wanted.fullname}}</p>
-  <p><b>Nascimento: </b>{{wanted.dateOfBirth}}</p>
-  <p><b>Nacionalidade: </b>{{wanted.nationality}}</p>
-  <p><b>Detalhes: </b>{{wanted.details}}</p>
-  <hr>
+<div class="input-group mb-3">
+  <span class="input-group-text">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <input type="text" class="form-control" placeholder="Pesquisar:" [(ngModel)]="filtroLista">
 </div>
+
+<!-- </form> -->
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <!-- <th>#</th> -->
+      <th>
+        <button type="button" class="btn btn-outline-light button-img-profile" (click)="alterarImagem()">Foto</button>
+      </th>
+      <th>Nome</th>
+      <th>Nascimento</th>
+      <th>Nacionalidade</th>
+      <th>Detalhes</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="wantedList && wantedList.length">
+    <tr *ngFor="let wanted of procuradosFiltrados">
+      <!-- <td>{{wanted.wantedId}}</td> -->
+      <td>
+        <img src="{{wanted.pictureUrl}}" alt="{{wanted.fullname}}" class="img-profile" [collapse]="mostrarImagem"
+          [isAnimated]="true" />
+      </td>
+      <td>{{wanted.fullname}}</td>
+      <td>{{wanted.dateOfBirth | date:'dd/MM/YYYY'}}</td>
+      <td>{{wanted.nationality}}</td>
+      <td>
+        <a href="{{wanted.details}}">Details</a>
+      </td>
+      <td>
+        <!-- <button type="button" class="btn btn-primary btn-sm mr-2">Alterar</button> -->
+        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="7" class="text-center" *ngIf="!wantedList.length">
+        <h4>Este nome não pertence a lista de procurados!</h4>
+      </td>
+    </tr>
+  </tfoot>
+
+</table>
