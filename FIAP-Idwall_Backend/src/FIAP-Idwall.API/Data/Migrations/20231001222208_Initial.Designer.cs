@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FIAP_Idwall.API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230930204804_Initial")]
+    [Migration("20231001222208_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

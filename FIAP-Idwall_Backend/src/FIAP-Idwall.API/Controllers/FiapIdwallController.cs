@@ -32,12 +32,22 @@ namespace FIAP_Idwall.API.Controllers
             return _context.GetDbFiapIdwalls.FirstOrDefault(evento => evento.WantedId == id); //retorna com os ids
         }
 
-
         [HttpPost]
-        public string Post()
+        public IActionResult Post([FromBody] FiapIdwall model)
         {
-           return "Exemplo de Post";
+            if (model == null)
+            {
+                return BadRequest("Os dados postados são inválidos.");
+            }
+
+            return CreatedAtAction("Get", new { id = model.WantedId }, model);
         }
+
+        // [HttpPost]
+        // public string Post()
+        // {
+        //    return "Exemplo de Post";
+        // }
 
         [HttpPut("{id}")]
         public string Put(int id)
